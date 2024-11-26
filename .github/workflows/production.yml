@@ -70,7 +70,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: hp75/devops_demo:${{ github.sha }} # Uses the Git SHA for tagging
+          tags: hp75/event_manager:${{ github.sha }} # Uses the Git SHA for tagging
           platforms: linux/amd64,linux/arm64 # Multi-platform support
           cache-from: type=registry,ref=woffee/wis_club_api:cache
           cache-to: type=inline,mode=max
