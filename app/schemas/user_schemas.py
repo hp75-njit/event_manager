@@ -32,8 +32,25 @@ def validate_password(password: str) -> str:
         raise ValueError("Password must contain at least one lowercase letter.")
     if not any(c.isdigit() for c in password):
         raise ValueError("Password must contain at least one digit.")
-    
     return password
+
+def validate_github_url(url: Optional[str]) -> Optional[str]:
+    if url is None:
+        return url
+    # Checking for Github URL pattern 
+    github_url_pattern = r'^https?:\/\/(?:www\.)?github\.com\/[a-zA-Z0-9-_]+\/?$'
+    if not re.match(github_url_pattern, url):
+        raise ValueError("Invalid GitHub profile URL. The correct format is: https://github.com/<username>.")
+    return url
+
+def validate_linkedin_url(url: Optional[str]) -> Optional[str]:
+    if url is None:
+        return url
+    # Checking for LinkedIn URL pattern
+    linkedin_url_pattern = r'^https?:\/\/(?:www\.)?linkedin\.com\/in\/[a-zA-Z0-9-_%]+\/?$'
+    if not re.match(linkedin_url_pattern, url):
+        raise ValueError("Invalid LinkedIn profile URL. The correct format is: https://www.linkedin.com/in/<username>.")
+    return url
 
 class UserBase(BaseModel):
     email: EmailStr = Field(..., example="john.doe@example.com")
@@ -45,8 +62,10 @@ class UserBase(BaseModel):
     linkedin_profile_url: Optional[str] =Field(None, example="https://linkedin.com/in/johndoe")
     github_profile_url: Optional[str] = Field(None, example="https://github.com/johndoe")
 
-    _validate_urls = validator('profile_picture_url', 'linkedin_profile_url', 'github_profile_url', pre=True, allow_reuse=True)(validate_url)
- 
+    _validate_urls = validator('profile_picture_url', pre=True, allow_reuse=True)(validate_url)
+    _validate_github_url = validator('github_profile_url', pre=True, allow_reuse=True)(validate_github_url)
+    _validate_linkedin_url = validator('linkedin_profile_url', pre=True, allow_reuse=True)(validate_linkedin_url)
+
     class Config:
         from_attributes = True
 
@@ -71,6 +90,10 @@ class UserUpdate(UserBase):
     linkedin_profile_url: Optional[str] =Field(None, example="https://linkedin.com/in/johndoe")
     github_profile_url: Optional[str] = Field(None, example="https://github.com/johndoe")
 
+    _validate_urls = validator('profile_picture_url', pre=True, allow_reuse=True)(validate_url)
+    _validate_github_url = validator('github_profile_url', pre=True, allow_reuse=True)(validate_github_url)
+    _validate_linkedin_url = validator('linkedin_profile_url', pre=True, allow_reuse=True)(validate_linkedin_url)
+    
     @root_validator(pre=True)
     def check_at_least_one_value(cls, values):
         if not any(values.values()):
