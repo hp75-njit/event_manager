@@ -10,7 +10,7 @@ Welcome to the Event Manager Company! As a newly hired Software QA Analyst/Devel
 
 - [Issue 3](https://github.com/hp75-njit/event_manager/issues/5) - For the Login, the page was asking for username to be entered, but it was expecting an email. Updated to code to accept both username and emails for authentication
 
--[Issue 4](https://github.com/hp75-njit/event_manager/issues/7) - Added seperate validations for Github and LinkedIn URLs.
+- [Issue 4](https://github.com/hp75-njit/event_manager/issues/7) - Added seperate validations for Github and LinkedIn URLs.
 
 - [Issue 5](https://github.com/hp75-njit/event_manager/issues/9) - Multiple Pytests were failing initially. Updated tests to take in proper values along with added functionality of mailtrap. Mailtrap credentials also added as a part of secrets under GitHub environment.
 
