@@ -2,6 +2,30 @@
 
 Welcome to the Event Manager Company! As a newly hired Software QA Analyst/Developer and a student in software engineering, you are embarking on an exciting journey to contribute to our project aimed at developing a secure, robust REST API that supports JWT (JSON Web Token ) token-based OAuth2 authentication. This API serves as the backbone of our user management system and will eventually expand to include features for event management and registration.
 
+## Issues Resolved
+
+- [Issue 1](https://github.com/hp75-njit/event_manager/issues/1) - Solved the issue where usernames were being generated dynamically at multiple locations. Which created a confusion to the user on the actual username being used to register. 
+
+- [Issue 2](https://github.com/hp75-njit/event_manager/issues/3) - Added proper password validation which included, minimum 8 characters, atleast one uppercase,one lowercase and one number
+
+- [Issue 3](https://github.com/hp75-njit/event_manager/issues/5) - For the Login, the page was asking for username to be entered, but it was expecting an email. Updated to code to accept both username and emails for authentication
+
+-[Issue 4](https://github.com/hp75-njit/event_manager/issues/7) - Added seperate validations for Github and LinkedIn URLs.
+
+- [Issue 5](https://github.com/hp75-njit/event_manager/issues/9) - Multiple Pytests were failing initially. Updated tests to take in proper values along with added functionality of mailtrap. Mailtrap credentials also added as a part of secrets under GitHub environment.
+
+## DockerHub
+
+![DockerHub Image](/DockerHub.png)
+
+## Summary
+
+This assignment was a great learning opportunity. I learned a lot on FastApi, Postgres along with responsibilities and process that takes place to perform testing. I learned how to identify bugs and errors and how to systematically address and resolve them. Fixing issues also extended to  updating pytests, since some tests were broken due to missing values in conftest.
+
+Initially, debugging was challenging because I didn’t fully understand how the application worked. However, by carefully analyzing the functions and their calls, I got an understanding on how different components were interconnected. Since I mainly worked on registration and login aspects for this project, it gave me gave me a clearer understanding of how user registration systems are designed, with a focus on security and validation. Creating seperate branches for each issue helped in dividing the work and also helped in tracking the issues that were being worked on at a time. 
+
+Overall, this project has helped a lot in increasing my technical and problem-solving skills. 
+
 ## Instructor Videos
 
  - [Introduction to REST API with Postgres](https://youtu.be/dgMCSND2FQw) - This video provides an overview of the REST API you'll be working with, including its structure, endpoints, and interaction with the PostgreSQL database.
